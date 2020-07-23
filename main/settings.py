@@ -25,8 +25,7 @@ SECRET_KEY = '87^vac7$-gerq64_8w*&8@i8%^-ssbn7eefyr=ltdzrvsev3j3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1', 'ascanner.pythonanywhere.com']
 
 # Application definition
 
