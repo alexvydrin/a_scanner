@@ -1,0 +1,36 @@
+{% extends 'scanner/base.html' %}
+
+{% block content %}
+
+    <h2>Рынки</h2>
+    <hr>
+    <p>
+        engine = {{engine}}
+        <br>
+        Запрос: <a href={{request_markets}}> {{request_markets}} </a>
+        <br>
+    </p>
+
+    <table>
+        <tr>
+            {% for column in text.markets.columns %}
+                <td style="text-align: center"> {{ column }} </td>
+            {% endfor %}
+            <td> </td>
+        </tr>
+        {% for row in text.markets.data %}
+            <tr>
+                {% for d in row %}
+                    <td style="text-align: left"> {{ d }} </td>
+                {% endfor %}
+                <td style="text-align: left">
+                    <a
+                            href="/securities?engine={{engine}}&market={{row.1}}">
+                            бумаги
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

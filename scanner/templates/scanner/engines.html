@@ -1,0 +1,34 @@
+{% extends 'scanner/base.html' %}
+
+{% block content %}
+
+    <h2>Торговые системы и рынки</h2>
+    <hr>
+    <p>
+        Запрос: <a href="http://iss.moex.com/iss/engines.json"> http://iss.moex.com/iss/engines.json </a>
+        <br>
+    </p>
+
+    <table>
+        <tr>
+            {% for column in text.engines.columns %}
+                <td style="text-align: center"> {{ column }} </td>
+            {% endfor %}
+            <td> </td>
+        </tr>
+        {% for row in text.engines.data %}
+            <tr>
+                {% for d in row %}
+                    <td style="text-align: left"> {{ d }} </td>
+                {% endfor %}
+                <td style="text-align: left">
+                    <a
+                            href="/markets?engine={{row.1}}">
+                            рынки
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'scanner/base.html' %}
+
+{% block content %}
+
+    <h2>Бумаги</h2>
+    <hr>
+    <p>
+        engine = {{engine}}
+        <br>
+        market = {{market}}
+        <br>
+        Запрос: <a href={{request_securities}}> {{request_securities}} </a>
+        <br>
+    </p>
+
+    <table>
+        <tr>
+            {% for column in text.securities.columns %}
+                <td style="text-align: center"> {{ column }} </td>
+            {% endfor %}
+        </tr>
+        {% for row in text.securities.data %}
+            <tr>
+                {% for d in row %}
+                    <td style="text-align: left"> {{ d }} </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
